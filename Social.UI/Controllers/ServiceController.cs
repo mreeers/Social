@@ -8,15 +8,13 @@ namespace Social.UI.Controllers
 {
     public class ServiceController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
-        public ActionResult CreateChild()
+        public IActionResult Index() => Ok(View());
+        
+        [HttpPost]
+        public async Task<IActionResult> CreateServise()
         {
-            return PartialView();
+            return View("Index");
         }
     }
 }

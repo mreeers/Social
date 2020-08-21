@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30128.74
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Domain", "Social.Domain\Social.Domain.csproj", "{9E5794F4-C0A4-4AA5-BDD5-791942796581}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Domain", "Social.Domain\Social.Domain.csproj", "{9E5794F4-C0A4-4AA5-BDD5-791942796581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Application", "Social.Application\Social.Application.csproj", "{7571D375-B2C8-418C-9CDA-41533B9B55AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Application", "Social.Application\Social.Application.csproj", "{7571D375-B2C8-418C-9CDA-41533B9B55AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Database", "Social.Database\Social.Database.csproj", "{F2CCE1BA-827B-4A6D-90B5-58B0CEECAC23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Database", "Social.Database\Social.Database.csproj", "{F2CCE1BA-827B-4A6D-90B5-58B0CEECAC23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.UI", "Social.UI\Social.UI.csproj", "{6243E679-54DF-41FB-B303-2BA2BAD5AD5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.UI", "Social.UI\Social.UI.csproj", "{6243E679-54DF-41FB-B303-2BA2BAD5AD5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,4 @@
 ﻿@page
-@{
-}
 
 <form asp-action="Create" asp-controller="Service" method="post" enctype="multipart/form-data">
     <div class="row">
@@ -8,11 +6,12 @@
         <div class="col-md-12 border rounded">
             <p><i>Сведения о ребенке</i></p>
             <!--Тут будет поле с ребенком CreateChild-->
-            @await Html.PartialAsync("CreateChild")
-
+            @*await Html.PartialAsync("CreateChild", Social.Domain.DTOs.ChildDTO);*@
+            @await Component.InvokeAsync("Child")
         </div>
         <div class="col-md-12 border rounded my-2">
             <p><i>Сведения о родителе/законном представителе</i></p>
+            @await Component.InvokeAsync("Represent")
             <!--CreateRepresent-->
         </div>
         <div class="col-md-12 border rounded my-2">
@@ -23,7 +22,7 @@
         <div class="col-md-12 border rounded my-2">
             <p><i>Документы</i></p>
             <!--Файлы для загрузки DocsModel-->
-            
+            @await Component.InvokeAsync("Docs")
         </div>
         <div class="col-md-6 my-2">
             <div class="form-group">

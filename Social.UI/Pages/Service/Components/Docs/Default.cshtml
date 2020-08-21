@@ -1,0 +1,159 @@
+﻿@model List<Social.Application.Files.DocsModel>
+
+<div class="accordion" id="accordionExample">
+    <i>Максимальный размер файла 5 мегабайтов.</i>
+    <br />
+    <i>Доступные расширения файлов: .pdf, .jpg, .tiff, .doc, .docx</i>
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Документы ребенка
+                </button>
+            </h5>
+        </div>
+        <div id="collapseOne" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+
+                <div class="alert alert-secondary">
+                    <label>@Model[0].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[0].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[0].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[1].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[1].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[2].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[2].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[2].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[3].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[3].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[3].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[4].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[4].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[4].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[5].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[5].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[5].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Документ удостоверяющий личность родителя
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+
+                <div class="alert alert-secondary">
+                    <label>@Model[6].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[6].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[6].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Документы подтверждающий полномочия законного представителя
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                @for (int i = 7; i <= 9; i++)
+                {
+                    <div class="alert alert-secondary">
+                        <label>@Model[i].LabelName</label>
+                        <div class="custom-file">
+                            <input type="file" asp-for="@Model[i].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                            <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                            <input asp-for="@Model[i].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="my-4">
+    <table class="table card">
+        <tr class="card-header">
+            <td colspan="2">
+                Дополнительная информация:
+            </td>
+        </tr>
+        <tr>
+            <td class="border-right">
+                Даю согласие на обработку моих персональных данных и персональных данных моего ребенка в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» с целью предоставления дополнительной меры социальной поддержки детям-инвалидам, проживающим на территории муниципального образования городской округ город Сургут и состоящим на учете в медицинских организациях Ханты-Мансийского автономного округа - Югры
+            </td>
+            <td class="align-middle">
+                <input type="checkbox" class="big-checkbox" required="true" />
+            </td>
+        </tr>
+
+        <tr>
+            <td class="border-right">
+                Ознакомлен(а) с условиями предоставления дополнительной меры социальной поддержки
+            </td>
+            <td class="align-middle">
+                <input type="checkbox" class="big-checkbox" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td class="border-right">
+                В случае отказа от предоставления дополнительной меры социальной поддержки обязуюсь своевременно уведомить в письменном виде департамент образования Администрации города
+            </td>
+            <td class="align-middle">
+                <input type="checkbox" class="big-checkbox" required="true" />
+            </td>
+        </tr>
+        <tr>
+            <td class="border-right">
+                Достоверность представленных мною сведений подтверждаю
+            </td>
+            <td class="align-middle">
+                <input type="checkbox" class="big-checkbox" required="true" />
+            </td>
+        </tr>
+    </table>
+</div>

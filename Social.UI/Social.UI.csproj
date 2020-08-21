@@ -23,8 +23,4 @@
     <ProjectReference Include="..\Social.Database\Social.Database.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Service\Components\ChildVewComponent\" />
-  </ItemGroup>
-
   </Project>
