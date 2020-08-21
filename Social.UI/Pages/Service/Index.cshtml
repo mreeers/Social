@@ -1,0 +1,37 @@
+﻿@page
+@{
+}
+
+<form asp-action="Create" asp-controller="Service" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <p><i>Поля, отмеченные звездочкой (*), обязательны для заполнения.</i></p>
+        <div class="col-md-12 border rounded">
+            <p><i>Сведения о ребенке</i></p>
+            <!--Тут будет поле с ребенком CreateChild-->
+            @await Html.PartialAsync("CreateChild")
+
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Сведения о родителе/законном представителе</i></p>
+            <!--CreateRepresent-->
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Сведения об отдыхе</i></p>
+            @*<div id="crimea-view" data-url="@Url.Action(action: "Crimea", controller: "Persons")"></div>*@
+            <!--Список доступных направлений-->
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Документы</i></p>
+            <!--Файлы для загрузки DocsModel-->
+            
+        </div>
+        <div class="col-md-6 my-2">
+            <div class="form-group">
+                @*Html.Recaptcha(RecaptchaSettings.Value)
+            @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
+            @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
+                <input type="submit" value="Отправить заявку" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,35 @@
+﻿@page
+@model Social.Domain.DTOs.ChildDTO
+@{
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Surname" class="control-label"></label>
+            <input asp-for="Surname" class="form-control" required="true" />
+            <span asp-validation-for="Surname" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control" required="true" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Patronymic" class="control-label"></label>
+            <input asp-for="Patronymic" class="form-control" required="true" />
+            <span asp-validation-for="Patronymic" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label asp-for="Bdate" class="control-label"></label>
+            <input asp-for="Bdate" class="form-control" required="true" onchange="validate_date" />
+            <span asp-validation-for="Bdate" class="text-danger"></span>
+        </div>
+    </div>
+</div>
