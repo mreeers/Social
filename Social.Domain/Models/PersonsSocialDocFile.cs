@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Shop.Domain.Models
+namespace Social.Domain.Models
 {
     public partial class PersonsSocialDocFile
     {

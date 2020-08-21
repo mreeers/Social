@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Shop.Domain.Models;
+using Social.Domain.Models;
 using Social.Application.Repository.Interface;
 using Social.Domain.DTOs;
 using System.Threading.Tasks;

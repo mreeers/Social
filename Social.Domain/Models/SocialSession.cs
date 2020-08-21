@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-namespace Shop.Domain.Models
+namespace Social.Domain.Models
 {
     public partial class SocialSession
     {

@@ -27,6 +27,7 @@ namespace Social.UI
             services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IBase, Base>();
+            services.AddScoped<IHoliday, Holiday>();
 
             services.AddAutoMapper(typeof(Startup));
         }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Shop.Domain.Models
+namespace Social.Domain.Models
 {
     public class PersonsSocialDoc
     {

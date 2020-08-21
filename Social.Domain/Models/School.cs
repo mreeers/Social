@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Shop.Domain.Models
+namespace Social.Domain.Models
 {
     public class School
     {

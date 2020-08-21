@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Social.Domain.Models.SocialSession>;
+
+<h5 class="text-center">Желаемый период санаторно – курортного лечения детей – инвалидов в г. Евпатория, Р. Крым в 2020 году</h5>
+<div>
+    <table class="table table-sm border table-hover">
+        <thead class="card-header">
+            <tr>
+                <td>
+                    №
+                </td>
+                <td>
+                    Дата заезда
+                </td>
+                <td>
+                    Дата выезда
+                </td>
+                <td>
+                    Количество путевок
+                </td>
+                <td>
+                </td>
+            </tr>
+        </thead>
+        <tbody id="crimea-checkbox">
+            @{
+                int i = 0;
+            }
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @{i = ++i;}
+                        @i
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateBegin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateEnd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Count)
+                    </td>
+                    <td>
+                        <input type="checkbox" class="big-checkbox chbx" value="@item.Id" name="SocialSessionId">
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <label>Способ доставки</label>
+    <select class="custom-select" id="select_some_type" name="method">
+        <option value="0">Авиа</option>
+        <option value="1">Ж/Д</option>
+        <option value="2">Автобус</option>
+        <option value="3">Самостоятельно</option>
+    </select>
+</div>

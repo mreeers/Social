@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Shop.Domain.Models
+namespace Social.Domain.Models
 {
     public partial class ServisesSocialPersonDoc
     {

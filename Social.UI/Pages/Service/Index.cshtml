@@ -18,6 +18,7 @@
             <p><i>Сведения об отдыхе</i></p>
             @*<div id="crimea-view" data-url="@Url.Action(action: "Crimea", controller: "Persons")"></div>*@
             <!--Список доступных направлений-->
+            @await Component.InvokeAsync("Holiday")
         </div>
         <div class="col-md-12 border rounded my-2">
             <p><i>Документы</i></p>

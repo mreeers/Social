@@ -1,28 +1,79 @@
-﻿using System;
+﻿using Social.Domain.Models;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Social.Domain.DTOs
 {
     public class HolidayDTO
     {
-        public decimal DeliveryId { get; set; }
-        public int? DeliveryMethod { get; set; }
-        public decimal SessionId { get; set; }
-        public decimal SessionNumSession { get; set; }
-        public DateTime? SessionDateBegin { get; set; }
-        public DateTime? SessionDateEnd { get; set; }
-        public decimal? SessionCount { get; set; }
-        public decimal PlaceId { get; set; }
-        public string PlaceName { get; set; }
-        public string PlaceComments { get; set; }
-        public decimal PeriodId { get; set; }
-        public string PeriodName { get; set; }
-        public DateTime? PeriodBegin { get; set; }
-        public DateTime? PeriodEnd { get; set; }
-        public int? PeriodIsActive { get; set; }
-        public decimal WayId { get; set; }
-        public string WayName { get; set; }
+        /// <summary>
+        /// Уникальный ключ
+        /// </summary>
+        [DisplayFormat(DataFormatString = ("{0:0.##}"))]
+        public decimal Id { get; set; }
 
+        /// <summary>
+        /// Место отдыха
+        /// </summary>
+        public decimal SocialPlaceId { get; set; }
+
+        /// <summary>
+        /// Номер смены
+        /// </summary>
+        [DisplayFormat(DataFormatString = ("{0:0.##}"))]
+        public decimal NumSession { get; set; }
+
+        /// <summary>
+        /// Дата начала смены
+        /// </summary>
+        [DataType(DataType.Date)]
+        public DateTime? DateBegin { get; set; }
+
+        /// <summary>
+        /// Дата окончания смены
+        /// </summary>
+        [DataType(DataType.Date)]
+        public DateTime? DateEnd { get; set; }
+
+        /// <summary>
+        /// Комментарий к условиям смены
+        /// </summary>
+        public string Comments { get; set; }
+
+        /// <summary>
+        /// Количество путевок
+        /// </summary>
+        [DisplayFormat(DataFormatString = ("{0:0.##}"))]
+        public decimal? Count { get; set; }
+
+        /// <summary>
+        /// Дата добавления записи
+        /// </summary>
+        public DateTime? DateInsert { get; set; }
+
+        /// <summary>
+        /// Дата последнего редактирования записи
+        /// </summary>
+        public DateTime? DateUpdate { get; set; }
+
+        public decimal? Version { get; set; }
+
+        /// <summary>
+        /// Код пользователя, редактировавший запись последним
+        /// </summary>
+        public decimal? IdUser { get; set; }
+
+        /// <summary>
+        /// Текущее событие
+        /// </summary>
+        public decimal? IdEventSession { get; set; }
+
+        public EventSocialSession IdEventSessionNavigation { get; set; }
+        public SocialPlace SocialPlace { get; set; }
+        public ICollection<EventSocialSession> EventSocialSession { get; set; }
+        public ICollection<ServisesSocial> ServisesSocial { get; set; }
+        public ICollection<SocialDelivery> SocialDelivery { get; set; }
     }
 }

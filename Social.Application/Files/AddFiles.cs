@@ -1,4 +1,4 @@
-﻿using Shop.Domain.Models;
+﻿using Social.Domain.Models;
 using Social.Database;
 using System;
 using System.Collections.Generic;

@@ -17,16 +17,16 @@
 
                 <div class="alert alert-secondary">
                     <label>@Model[0].LabelName</label>
-                    <div class="custom-file">
-                        <input type="file" asp-for="@Model[0].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                    <div class="custom-file"  @@click="onSubmit">
+                        <input refs="file" type="file" asp-for="@Model[0].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" >
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[0].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
                 </div>
                 <div class="alert alert-secondary">
                     <label>@Model[1].LabelName</label>
-                    <div class="custom-file">
-                        <input type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                    <div class="custom-file" @@click="onSubmit">
+                        <input refs="file" type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[1].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>

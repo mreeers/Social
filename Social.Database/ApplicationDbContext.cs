@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Shop.Domain.Models;
+using Social.Domain.Models;
 
 namespace Social.Database
 {
