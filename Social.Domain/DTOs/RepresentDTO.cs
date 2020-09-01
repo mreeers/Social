@@ -6,25 +6,21 @@ namespace Social.Domain.DTOs
 {
     public class RepresentDTO
     {
-        /// <summary>
-        /// Код записи (первичный ключ)
-        /// </summary>
         public decimal PersonId { get; set; }
-
         /// <summary>
         /// Фамилия
         /// </summary>
-        public string Surname { get; set; }
+        public string SurnameRepresent { get; set; }
 
         /// <summary>
         /// Имя
         /// </summary>
-        public string Name { get; set; }
+        public string NameRepresent { get; set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
-        public string Patronymic { get; set; }
+        public string PatronymicRepresent { get; set; }
 
         /// <summary>
         /// Телефон домашний

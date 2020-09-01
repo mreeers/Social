@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Social.Application.Person;
 
 namespace Social.Application.Servises
 {
@@ -23,17 +24,24 @@ namespace Social.Application.Servises
             _baseRepo = baseRepo;
         }
 
-        public async Task<ServisesSocial> Do(ChildDTO child, RepresentDTO represent, SocialSession session, int method)
+        public async Task<ServisesSocial> Do(ChildDTO child, RepresentDTO represent, int SocialSessionId, List<DocsDTO> files, int method)
         {
+            var createChild = new CreateChildren(_baseRepo, _mapper);
+            await createChild.Do(child);
+
+            var createRepresent = new CreateRepresent(_baseRepo, _mapper);
+            await createRepresent.Do(represent);
+
             var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
             {
                 Id = _baseRepo.GetId(),
-                PersonId = child.PersonId,
-                SessionId = session.Id,
+                PersonId = createChild.ChildDTO.PersonId,
+                SessionId = SocialSessionId,
                 Delivery = method,
                 DocNum = _baseRepo.GetNumberNexDocNum()
-
             });
+
+
 
             return servises;
         }

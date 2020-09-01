@@ -7,18 +7,14 @@ namespace Social.Domain.DTOs
 {
     public class ChildDTO
     {
-        /// <summary>
-        /// Код записи (первичный ключ)
-        /// </summary>
         public decimal PersonId { get; set; }
-
         /// <summary>
         /// Фамилия
         /// </summary>
         [Display(Name = "Фамилия *")]
         [StringLength(200)]
         [Required]
-        public string Surname { get; set; }
+        public string SurnameChild { get; set; }
 
         /// <summary>
         /// Имя
@@ -26,14 +22,14 @@ namespace Social.Domain.DTOs
         [Display(Name = "Имя *")]
         [StringLength(200)]
         [Required]
-        public string Name { get; set; }
+        public string NameChild { get; set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
         [Display(Name = "Отчество")]
         [StringLength(200)]
-        public string Patronymic { get; set; }
+        public string PatronymicChild { get; set; }
 
         /// <summary>
         /// Дата рождения

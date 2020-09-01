@@ -35,14 +35,16 @@ namespace Social.Application.Repository
 
         public decimal GetId()
         {
-            string getIdSql = "select S_NEW_SERVISES_SOCIAL_NUM.NEXTVAL from dual";
+            string getIdSql = "select uid_sequence.nextval from dual";
 
-            using(var command = _context.Database.GetDbConnection().CreateCommand())
+            using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
                 try
                 {
+                    command.Connection.Open();
                     command.CommandText = getIdSql;
                     var seqvalId = command.ExecuteScalar().ToString();
+                    command.Connection.Close();
                     return decimal.Parse(seqvalId);
 
                 }
@@ -63,9 +65,11 @@ namespace Social.Application.Repository
             {
                 try
                 {
+                    command.Connection.Open();
                     command.CommandText = sql;
                     var seqvalDocNum = Convert.ToInt64(command.ExecuteScalar().ToString());
                     string docNumber = String.Format(NumberFormatString, seqvalDocNum + baseNumber);
+                    command.Connection.Close();
                     return docNumber;
                 }
                 catch (Exception ex)

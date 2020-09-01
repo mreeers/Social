@@ -33,8 +33,8 @@ namespace Social.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-            //    .HasAnnotation("Relational:DefaultSchema", "");
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
+                .HasAnnotation("Relational:DefaultSchema", "");
 
             modelBuilder.Entity<EventSocialSession>(entity =>
             {

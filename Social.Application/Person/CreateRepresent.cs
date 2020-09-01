@@ -23,9 +23,9 @@ namespace Social.Application.Person
             var represent = _mapper.Map<PersonsSocial>(new RepresentDTO
             {
                 PersonId = _baseRepo.GetId(),
-                Name = request.Name,
-                Surname = request.Surname,
-                Patronymic = request.Patronymic,
+                NameRepresent = request.NameRepresent,
+                SurnameRepresent = request.SurnameRepresent,
+                PatronymicRepresent = request.PatronymicRepresent,
                 Email = request.Email,
                 PhoneHome = request.PhoneHome,
                 PhoneMobile = request.PhoneMobile

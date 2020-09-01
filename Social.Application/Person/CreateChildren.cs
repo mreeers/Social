@@ -10,6 +10,7 @@ namespace Social.Application.Person
     {
         private readonly IBase _baseRepo;
         private readonly IMapper _mapper;
+        public ChildDTO ChildDTO { get; set; }
 
         public CreateChildren(IBase baseRepo, IMapper mapper)
         {
@@ -23,9 +24,9 @@ namespace Social.Application.Person
             var child = _mapper.Map<PersonsSocial>(new ChildDTO
             {
                 PersonId = _baseRepo.GetId(),
-                Name = request.Name,
-                Surname = request.Surname,
-                Patronymic = request.Patronymic,
+                NameChild = request.NameChild,
+                SurnameChild = request.SurnameChild,
+                PatronymicChild = request.PatronymicChild,
                 Bdate = request.Bdate
             });
 

@@ -70,7 +70,7 @@ namespace Social.Domain.DTOs
         public decimal? IdCurrRepresent { get; set; }
 
 
-        public string InfoIpAdress { get; set; }
-        public string InfoBrowser { get; set; }
+        //public string InfoIpAdress { get; set; }
+        //public string InfoBrowser { get; set; }
     }
 }

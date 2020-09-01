@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Social.Domain.DTOs;
+using System.Threading.Tasks;
 
 namespace Social.UI.ViewModels
 {
