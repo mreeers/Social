@@ -24,26 +24,33 @@ namespace Social.Application.Servises
             _baseRepo = baseRepo;
         }
 
-        public async Task<ServisesSocial> Do(ChildDTO child, RepresentDTO represent, int SocialSessionId, List<DocsDTO> files, int method)
+        public async Task<ServisesSocial> Do(ChildDTO childInfo, RepresentDTO represent, int SocialSessionId, List<DocsDTO> files, int method)
         {
-            var createChild = new CreateChildren(_baseRepo, _mapper);
-            await createChild.Do(child);
+            var createdChild = new CreateChildren(_baseRepo, _mapper).Do(childInfo);
+            _baseRepo.Add(createdChild);
 
             var createRepresent = new CreateRepresent(_baseRepo, _mapper);
             await createRepresent.Do(represent);
 
-            var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
-            {
-                Id = _baseRepo.GetId(),
-                PersonId = createChild.ChildDTO.PersonId,
-                SessionId = SocialSessionId,
-                Delivery = method,
-                DocNum = _baseRepo.GetNumberNexDocNum()
-            });
+            _baseRepo.Add(createRepresent);
 
+            //var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
+            //{
+            //    Id = _baseRepo.GetId(),
+            //    PersonId = createC.PersonId,
+            //    SessionId = SocialSessionId,
+            //    Delivery = method,
+            //    DocNum = _baseRepo.GetNumberNexDocNum()
+            //});
 
+            return null;
+        }
 
-            return servises;
+        private async Task<string> unicCodeService()
+        {
+            //ФИОРЕБЕНКАФИОРОДИТЕЛЯДАТАРОЖДЕНИЯНОМЕРНАПРАВЛЕНИЯ 
+
+            return null;
         }
     }
 }

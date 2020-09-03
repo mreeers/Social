@@ -25,7 +25,10 @@ namespace Social.UI.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index() => Ok(View());
+        public IActionResult Index()
+        {
+            return View();
+        }
 
         [HttpPost]
         public async Task<IActionResult> Create(ChildDTO child, RepresentDTO represent, int socialSessionId, List<DocsDTO> files, int method)

@@ -2,7 +2,7 @@
 using Social.Domain.Models;
 using Social.Domain.DTOs;
 
-namespace Social.Application.Helpers.Automapper
+namespace Social.UI.Helpers.Automapper
 {
     public class Config : Profile
     {

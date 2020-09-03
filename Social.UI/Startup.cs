@@ -8,7 +8,6 @@ using Microsoft.Extensions.Hosting;
 using Social.Application.Repository;
 using Social.Application.Repository.Interface;
 using Social.Database;
-using System;
 
 namespace Social.UI
 {
@@ -30,8 +29,8 @@ namespace Social.UI
             services.AddScoped<IBase, Base>();
             services.AddScoped<IHoliday, Holiday>();
 
-            //services.AddAutoMapper(typeof(Startup));
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(typeof(Startup));
+            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

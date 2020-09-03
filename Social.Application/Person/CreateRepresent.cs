@@ -10,6 +10,7 @@ namespace Social.Application.Person
     {
         private readonly IBase _baseRepo;
         private readonly IMapper _mapper;
+        public ChildDTO ChildDTO { get; set; }
 
         public CreateRepresent(IBase baseRepo, IMapper mapper)
         {
@@ -30,9 +31,6 @@ namespace Social.Application.Person
                 PhoneHome = request.PhoneHome,
                 PhoneMobile = request.PhoneMobile
             });
-
-            _baseRepo.Add(request);
-            await _baseRepo.SaveAllAsync();
 
             return represent;
         }

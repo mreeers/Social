@@ -97,7 +97,7 @@ namespace Social.Domain.Models
         /// </summary>
         public decimal? IdUser { get; set; }
 
-        public decimal Version { get; set; }
+        public decimal? Version { get; set; }
 
         /// <summary>
         /// Заполняется, если в ЕСС адрес не найден

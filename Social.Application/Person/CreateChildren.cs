@@ -10,7 +10,6 @@ namespace Social.Application.Person
     {
         private readonly IBase _baseRepo;
         private readonly IMapper _mapper;
-        public ChildDTO ChildDTO { get; set; }
 
         public CreateChildren(IBase baseRepo, IMapper mapper)
         {
@@ -21,18 +20,22 @@ namespace Social.Application.Person
         public async Task<PersonsSocial> Do(ChildDTO request)
         {
             //TODO: Добавить проверку, есть ли этот ребенок в системе
+
             var child = _mapper.Map<PersonsSocial>(new ChildDTO
             {
                 PersonId = _baseRepo.GetId(),
                 NameChild = request.NameChild,
                 SurnameChild = request.SurnameChild,
                 PatronymicChild = request.PatronymicChild,
-                Bdate = request.Bdate
+                Bdate = request.Bdate,
+                Birthplace = request.Birthplace,
+                Sex = request.Sex
             });
-
             _baseRepo.Add(child);
-            await _baseRepo.SaveAllAsync();
+            //await _baseRepo.SaveAllAsync();
+
             return child;
         }
+
     }
 }
