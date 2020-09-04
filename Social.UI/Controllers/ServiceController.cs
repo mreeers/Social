@@ -11,6 +11,7 @@ using Social.Domain.Models;
 
 namespace Social.UI.Controllers
 {
+    [Route("service")]
     [Route("controller")]
     public class ServiceController : Controller
     {

@@ -52,7 +52,7 @@ namespace Social.Application.Servises
                 DocNum = _baseRepo.GetNumberNexDocNum(),
                 PersonId = child.PersonId,
                 Delivery = method,
-                Unic_Code = unicCodeService(childInfo, representInfo, SocialSessionId).ToString()
+                //Unic_Code = unicCodeService(childInfo, representInfo, SocialSessionId).ToString()
             });
 
 

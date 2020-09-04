@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,13 +25,13 @@ namespace Social.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("MFCTestConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IBase, Base>();
             services.AddScoped<IHoliday, Holiday>();
 
             services.AddAutoMapper(typeof(Startup));
-            //services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +59,9 @@ namespace Social.UI
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Service}/{action=Index}/{id?}");
             });
         }
     }
