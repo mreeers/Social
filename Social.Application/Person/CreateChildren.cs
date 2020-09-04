@@ -31,7 +31,7 @@ namespace Social.Application.Person
                 Birthplace = request.Birthplace,
                 Sex = request.Sex
             });
-            _baseRepo.Add(child);
+            //_baseRepo.Add(child);
             //await _baseRepo.SaveAllAsync();
 
             return child;

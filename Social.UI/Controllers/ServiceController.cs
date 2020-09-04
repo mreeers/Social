@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Social.Application.Files;
 using Social.Application.Repository.Interface;
 using Social.Application.Servises;
 using Social.Database;
@@ -31,7 +32,7 @@ namespace Social.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(ChildDTO child, RepresentDTO represent, int socialSessionId, List<DocsDTO> files, int method)
+        public async Task<IActionResult> Create(ChildDTO child, RepresentDTO represent, int socialSessionId, List<DocsModel> files, int method)
         {
             var services = new CreateServises(_context, _mapper, _baseRepo);
             await services.Do(child, represent, socialSessionId, files, method);
