@@ -21,7 +21,7 @@ namespace Social.Application.Files
             _baseRepo = baseRepo;
         }
 
-        public async Task<List<DocsModel>> Do(List<DocsModel> docs, ChildDTO childInfo, RepresentDTO representInfo, ServisesDTO servises)//Должен принять Servises, Child, Represent
+        public async Task<List<DocsModel>> Do(List<DocsModel> docs, ChildDTO childInfo, RepresentDTO representInfo, ServisesSocial servises)//Должен принять Servises, Child, Represent
         {
             //В новый список сохраняются все записи, где присутствует файл
             List<DocsModel> files = new List<DocsModel>();
@@ -105,7 +105,6 @@ namespace Social.Application.Files
                     _baseRepo.Add(servisesSocialPersonDoc);
                 }
             }
-
 
             return files;
         }
