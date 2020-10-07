@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using Social.Domain.Models;
+using Social.Application.Files;
+using Social.Application.Person;
 using Social.Application.Repository.Interface;
 using Social.Database;
 using Social.Domain.DTOs;
+using Social.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Social.Application.Person;
-using Social.Application.Files;
 
 namespace Social.Application.Servises
 {
@@ -38,40 +38,94 @@ namespace Social.Application.Servises
              * Создаем историю
              * Сохраняем контекст
              */
-            var createdChild = new CreateChildren(_baseRepo, _mapper);
-            var child = await createdChild.Do(childInfo);
+                var createdChild = new CreateChildren(_baseRepo, _mapper);
+                var child = await createdChild.Do(childInfo);
 
-            var createRepresent = new CreateRepresent(_baseRepo, _mapper);
-            var represent = await createRepresent.Do(representInfo);
+                var createRepresent = new CreateRepresent(_baseRepo, _mapper);
+                var represent = await createRepresent.Do(representInfo);
 
-            
+                var servisesHistorys = new ServisesSocialHistorys();
 
-            var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
-            {
-                Id = _baseRepo.GetId(),
-                DocNum = _baseRepo.GetNumberNexDocNum(),
-                PersonId = child.PersonId,
-                Delivery = method,
-                //Unic_Code = unicCodeService(childInfo, representInfo, SocialSessionId).ToString()
-            });
+                //Уникальный код
+                var unicCode = UnicCodeService(childInfo, representInfo, SocialSessionId);
 
+                var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
+                {
+                    Id = _baseRepo.GetId(),
+                    DocNum = _baseRepo.GetNumberNexDocNum(),
+                    PersonId = child.PersonId,
+                    Delivery = method,
+                    Unic_Code = unicCode,
+                    SessionId = SocialSessionId,
+                });
 
-            _baseRepo.Add(createdChild);
-            _baseRepo.Add(createRepresent);
+                if (represent.IsLegalRepresent == 0)
+                {
+                    servises.IdCurrLegalRepresent = represent.PersonId;
+                }
+                else
+                {
+                    servises.IdCurrRepresent = represent.PersonId;
+                }
+
+                await new AddFiles(_context, _baseRepo).Do(files, childInfo, representInfo, servises);
+
+                _baseRepo.Add(child);
+                _baseRepo.Add(represent);
+                //_baseRepo.Add(docs);
+                _baseRepo.Add(servises);
 
             if (represent.IsLegalRepresent == 0)
             {
-                servises.IdCurrLegalRepresent = represent.PersonId;
+                //Записать в таблицу PERSONS_SOCIAL_LEGAL_REPRESENT
+                var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
+                personsSocialLegalRepresent.Id = _baseRepo.GetId();
+                personsSocialLegalRepresent.IdLegalRepresent = represent.PersonId;
+                personsSocialLegalRepresent.IdPerson = child.PersonId;
+                personsSocialLegalRepresent.IdUser = 1;
+                _baseRepo.Add(personsSocialLegalRepresent);
             }
             else
             {
-                servises.IdCurrRepresent = represent.PersonId;
+                //Записать в таблицу PERSONS_SOCIAL_REPRESENT
+                var personsSocialRepresent = new PersonsSocialRepresent();
+                personsSocialRepresent.Id = _baseRepo.GetId();
+                personsSocialRepresent.IdRepresent = represent.PersonId;
+                personsSocialRepresent.IdPerson = child.PersonId;
+                personsSocialRepresent.IdUser = 1;
+                _baseRepo.Add(personsSocialRepresent);
+            }
+
+            if (await _baseRepo.SaveAllAsync())
+            {
+                servisesHistorys.Id = _baseRepo.GetId();
+                servisesHistorys.ServisesId = servises.Id;
+                servisesHistorys.IdUser = 1; //Системный пользователь
+                servisesHistorys.IdStatus = 400; //Статус - Формирование услуги
+                _baseRepo.Add(servisesHistorys);
+                await _baseRepo.SaveAllAsync();
+
+                servises.IdServiceHistorys = servisesHistorys.Id;
+                //_baseRepo.Add(servises);
+                
+            }
+            else
+            {
+                //Передать ошибку
+                //return BadRequest("Повторите снова");
+            }
+
+            //TODO: если не сохранилось, то надо сообщить об этом
+            if (await _baseRepo.SaveAllAsync())
+            {
+                //Передать, что все окей и номер 
+                //return RedirectToAction("Success", new { DocNum });
             }
 
             return null;
         }
 
-        private async Task<string> unicCodeService(ChildDTO child, RepresentDTO represent, int SocialId)
+        private string UnicCodeService(ChildDTO child, RepresentDTO represent, int SocialId)
         {
             //Уникальный ключ на смену
             //ФИОРЕБЕНКАФИОРОДИТЕЛЯДАТАРОЖДЕНИЯНОМЕРНАПРАВЛЕНИЯ 

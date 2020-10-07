@@ -25,7 +25,7 @@ namespace Social.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("MFCTestConnection")));
 
             services.AddScoped<IBase, Base>();
             services.AddScoped<IHoliday, Holiday>();

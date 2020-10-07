@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Social.Domain.DTOs
@@ -7,20 +8,31 @@ namespace Social.Domain.DTOs
     public class RepresentDTO
     {
         public decimal PersonId { get; set; }
+
         /// <summary>
         /// Фамилия
         /// </summary>
+        [Display(Name = "Фамилия *")]
+        [StringLength(200)]
+        [Required]
         public string SurnameRepresent { get; set; }
 
         /// <summary>
         /// Имя
         /// </summary>
+        [Display(Name = "Имя *")]
+        [StringLength(200)]
+        [Required]
         public string NameRepresent { get; set; }
 
         /// <summary>
         /// Отчество
         /// </summary>
+        [Display(Name = "Отчество")]
+        [StringLength(200)]
         public string PatronymicRepresent { get; set; }
+
+        public string Birthplace { get; set; } = "Сургут";
 
         /// <summary>
         /// Телефон домашний
