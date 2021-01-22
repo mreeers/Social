@@ -37,6 +37,7 @@ namespace Social.Domain.DTOs
         /// <summary>
         /// Телефон домашний
         /// </summary>
+        [Display(Name = "Домашний телефон")]
         public string PhoneHome { get; set; }
 
         /// <summary>
@@ -47,6 +48,8 @@ namespace Social.Domain.DTOs
         /// <summary>
         /// Телефон мобильный
         /// </summary>
+        [Display(Name = "Мобильный телефон *")]
+        [Required]
         public string PhoneMobile { get; set; }
 
         /// <summary>
@@ -57,6 +60,7 @@ namespace Social.Domain.DTOs
         /// <summary>
         /// Адрес электронной почты
         /// </summary>
+        [Display(Name = "Электронная почта")]
         public string Email { get; set; }
 
         /// <summary>

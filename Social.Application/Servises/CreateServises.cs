@@ -125,11 +125,15 @@ namespace Social.Application.Servises
             return null;
         }
 
+<<<<<<< HEAD
+        private async Task<string> unicCodeService(ChildDTO child, int SocialId)
+=======
         private string UnicCodeService(ChildDTO child, RepresentDTO represent, int SocialId)
+>>>>>>> 1b54e0736dc2e88d800d02aef7f71e7afb53975d
         {
             //Уникальный ключ на смену
-            //ФИОРЕБЕНКАФИОРОДИТЕЛЯДАТАРОЖДЕНИЯНОМЕРНАПРАВЛЕНИЯ 
-            string unicCode = $"{child.SurnameChild}{child.NameChild}{child.PatronymicChild}-{represent.SurnameRepresent}{represent.NameRepresent}{represent.PatronymicRepresent}-{SocialId}";
+            //СНИЛС-IdСмены 
+            string unicCode = $"{child.Snils}-{SocialId}";
             return unicCode;
         }
     }

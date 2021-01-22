@@ -17,15 +17,15 @@
 
                 <div class="alert alert-secondary">
                     <label>@Model[0].LabelName</label>
-                    <div class="custom-file"  >
-                        <input refs="file" type="file" asp-for="@Model[0].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" >
+                    <div class="custom-file">
+                        <input refs="file" type="file" asp-for="@Model[0].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[0].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
                 </div>
                 <div class="alert alert-secondary">
                     <label>@Model[1].LabelName</label>
-                    <div class="custom-file" >
+                    <div class="custom-file">
                         <input refs="file" type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[1].FileId" type="hidden" class="form-control" placeholder="ID документа">
@@ -63,6 +63,14 @@
                         <input asp-for="@Model[5].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
                 </div>
+                <div class="alert alert-secondary">
+                    <label>@Model[6].LabelName</label>
+                    <div class="custom-file">
+                        <input type="file" asp-for="@Model[6].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
+                        <input asp-for="@Model[6].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -79,11 +87,11 @@
             <div class="card-body">
 
                 <div class="alert alert-secondary">
-                    <label>@Model[6].LabelName</label>
+                    <label>@Model[7].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[6].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <input type="file" asp-for="@Model[7].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
-                        <input asp-for="@Model[6].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                        <input asp-for="@Model[7].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
 
                 </div>
@@ -100,7 +108,7 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                @for (int i = 7; i <= 9; i++)
+                @for (int i = 8; i <= 10; i++)
                 {
                     <div class="alert alert-secondary">
                         <label>@Model[i].LabelName</label>

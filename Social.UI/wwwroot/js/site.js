@@ -1,7 +1,7 @@
 ﻿var app = new Vue({
     el: "#app",
-    methods: {
 
+    methods: {
         onSubmit(e) {
             const file = this.$refs.file.files[0];
 
@@ -16,7 +16,6 @@
                 alert('File too big (> 1MB)');
                 return;
             }
-
             alert('File OK');
         }
     }

@@ -50,5 +50,12 @@ namespace Social.Domain.DTOs
         [MaxLengthAttribute(200)]
         [Display(Name = "Место рождения *")]
         public string Birthplace { get; set; } = "Сургут";
+        
+        /// <summary>
+        /// Место рождения
+        /// </summary>
+        [MaxLengthAttribute(200)]
+        [Display(Name = "СНИЛС *")]
+        public string Snils { get; set; }
     }
 }

@@ -29,7 +29,8 @@ namespace Social.Application.Person
                 PatronymicChild = request.PatronymicChild,
                 Bdate = request.Bdate,
                 Birthplace = request.Birthplace,
-                Sex = request.Sex
+                Sex = request.Sex,
+                Snils = request.Snils
             });
             //_baseRepo.Add(child);
             //await _baseRepo.SaveAllAsync();
