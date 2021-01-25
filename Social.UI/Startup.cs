@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Hosting;
 using Social.Application.Repository;
 using Social.Application.Repository.Interface;
 using Social.Database;
+using System.Globalization;
 
 namespace Social.UI
 {
@@ -24,8 +26,13 @@ namespace Social.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    options.DefaultRequestCulture = new RequestCulture("ru-RU");
+            //});
+
             services.AddRazorPages();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("MFCTestConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddScoped<IBase, Base>();
             services.AddScoped<IHoliday, Holiday>();
@@ -37,6 +44,16 @@ namespace Social.UI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var supportedCultures = new[] { new CultureInfo("ru-RU") };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("ru-RU"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+
+            app.UseRequestLocalization();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -63,6 +80,7 @@ namespace Social.UI
                     name: "default",
                     pattern: "{controller=Service}/{action=Index}/{id?}");
             });
+
         }
     }
 }

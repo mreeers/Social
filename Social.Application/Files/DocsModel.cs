@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Social.Application.Files
@@ -10,7 +11,9 @@ namespace Social.Application.Files
         public IFormFile FileBody { get; set; }
         public string Series { get; set; }
         public string Number { get; set; }
-        public DateTime DateOfIssue { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DateOfIssue { get; set; }
         public string Get { get; set; }
         public decimal FileId { get; set; }
         public string LabelName;

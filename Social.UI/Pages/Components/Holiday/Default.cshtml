@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<Social.Domain.Models.SocialSession>;
 
-<h5 class="text-center">Желаемый период санаторно – курортного лечения детей – инвалидов в г. Евпатория, Р. Крым в 2020 году</h5>
+<h5 class="text-center">Желаемый период санаторно – курортного лечения детей – инвалидов в г. Евпатория, Р. Крым в @DateTime.Now.Year году</h5>
 <div>
     <table class="table table-sm border table-hover">
         <thead class="card-header">
@@ -42,7 +42,9 @@
                         @Html.DisplayFor(modelItem => item.Count)
                     </td>
                     <td>
-                        <input type="checkbox" class="big-checkbox chbx" value="@item.Id" name="SocialSessionId">
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input" value="@item.Id" name="SocialSessionId">
+                        </div>
                     </td>
                 </tr>
             }

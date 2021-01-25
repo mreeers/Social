@@ -33,6 +33,7 @@
         </nav>
     </header>
     <div class="container" id="app">
+
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -46,13 +47,52 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @*<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>*@
+    <script src="~/lib/vue/vue.min.js"></script>
+    <script src="~/lib/vue-the-mask/vue-the-mask.min.js"></script>
 
     @RenderSection("Scripts", required: false)
+
 </body>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="~/js/site.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            legal: 0
+        },
+        methods: {
+            onSubmit(e) {
+                const file = this.$refs.file.files[0];
+
+                if (!file) {
+                    e.preventDefault();
+                    alert('No file chosen');
+                    return;
+                }
+
+                if (file.size > 1024 * 1024) {
+                    e.preventDefault();
+                    alert('File too big (> 1MB)');
+                    return;
+                }
+                alert('File OK');
+            }
+        }
+    })
+</script>
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+<script>
+    //Выбор только одного checkbox
+    $('#relax input:checkbox').click(function () {
+        if ($(this).is(':checked')) {
+            $('#relax input:checkbox').not(this).prop('checked', false);
+        }
+    });
+</script>
+
 </html>

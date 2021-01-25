@@ -3,7 +3,7 @@
 <div class="accordion" id="accordionExample">
     <i>Максимальный размер файла 5 мегабайтов.</i>
     <br />
-    <i>Доступные расширения файлов: .pdf, .jpg, .tiff, .doc, .docx</i>
+    <i>Доступные расширения файлов: .jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx</i>
     <div class="card">
         <div class="card-header" id="headingOne">
             <h5 class="mb-0">
@@ -22,6 +22,28 @@
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[0].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
+                    <div>
+                        <div class="form-inline">
+                            <div>
+                                <label for="inputSeries">Серия</label>
+                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label>Номер</label>
+                                <input asp-for="@Model[0].Number" type="text" placeholder="Номер" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label class="control-label">Дата выдачи</label>
+                                <input asp-for="@Model[0].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
+                            </div>
+
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <label>Кем выдан</label>
+                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
+                    </div>
                 </div>
                 <div class="alert alert-secondary">
                     <label>@Model[1].LabelName</label>
@@ -29,6 +51,28 @@
                         <input refs="file" type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[1].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                    </div>
+                    <div>
+                        <div class="form-inline">
+                            <div>
+                                <label for="inputSeries">Серия</label>
+                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label>Номер</label>
+                                <input asp-for="@Model[0].Number" type="text" placeholder="Номер" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label class="control-label">Дата выдачи</label>
+                                <input asp-for="@Model[0].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div>
+                        <label>Кем выдан</label>
+                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
                     </div>
                 </div>
                 <div class="alert alert-secondary">
@@ -75,8 +119,8 @@
         </div>
     </div>
 
-    <div class="card">
-        <div class="card-header" id="headingTwo">
+    <div class="card" v-if="legal === 0">
+        <div class="card-header" id="headingTwo" >
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     Документ удостоверяющий личность родителя
@@ -93,12 +137,33 @@
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[7].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
+                    <div>
+                        <div class="form-inline">
+                            <div>
+                                <label for="inputSeries">Серия</label>
+                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label>Номер</label>
+                                <input asp-for="@Model[0].Number" type="text" placeholder="Номер" class="form-control" />
+                            </div>
+                            <div class="ml-2">
+                                <label class="control-label">Дата выдачи</label>
+                                <input asp-for="@Model[0].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
+                            </div>
 
+                        </div>
+
+                    </div>
+                    <div>
+                        <label>Кем выдан</label>
+                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="card">
+    <div class="card" v-else>
         <div class="card-header" id="headingThree">
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">

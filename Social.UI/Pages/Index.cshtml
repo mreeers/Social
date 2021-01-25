@@ -1,43 +1,40 @@
 ﻿@page
-
-    <form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data">
-        <div class="row">
-            <p><i>Поля, отмеченные звездочкой (*), обязательны для заполнения.</i></p>
-            <div class="col-md-12 border rounded">
-                <p><i>Сведения о ребенке</i></p>
-                <!--Тут будет поле с ребенком CreateChild-->
-                @*await Html.PartialAsync("CreateChild", Social.Domain.DTOs.ChildDTO);*@
-                @await Component.InvokeAsync("Child")
-            </div>
-            <div class="col-md-12 border rounded my-2">
-                <p><i>Сведения о родителе/законном представителе</i></p>
-                @await Component.InvokeAsync("Represent")
-                <!--CreateRepresent-->
-            </div>
-            <div class="col-md-12 border rounded my-2">
-                <p><i>Сведения об отдыхе</i></p>
-                @*<div id="crimea-view" data-url="@Url.Action(action: "Crimea", controller: "Persons")"></div>*@
-                <!--Список доступных направлений-->
-               @await Component.InvokeAsync("Holiday")
-            </div>
-            <div class="col-md-12 border rounded my-2">
-                <p><i>Документы</i></p>
-                <!--Файлы для загрузки DocsModel-->
-                @await Component.InvokeAsync("Docs")
-            </div>
-            <div class="col-md-6 my-2">
-                <div class="form-group">
-                    @*Html.Recaptcha(RecaptchaSettings.Value)
+<form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <p><i>Поля, отмеченные звездочкой (*), обязательны для заполнения.</i></p>
+        <div class="col-md-12 border rounded">
+            <p><i>Сведения о ребенке</i></p>
+            <!--Тут будет поле с ребенком CreateChild-->
+            @*await Html.PartialAsync("CreateChild", Social.Domain.DTOs.ChildDTO);*@
+            @await Component.InvokeAsync("Child")
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Сведения о родителе/законном представителе</i></p>
+            @await Component.InvokeAsync("Represent")
+            <!--CreateRepresent-->
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Сведения об отдыхе</i></p>
+            @*<div id="crimea-view" data-url="@Url.Action(action: "Crimea", controller: "Persons")"></div>*@
+            <!--Список доступных направлений-->
+            @await Component.InvokeAsync("Holiday")
+        </div>
+        <div class="col-md-12 border rounded my-2">
+            <p><i>Документы</i></p>
+            <!--Файлы для загрузки DocsModel-->
+            @await Component.InvokeAsync("Docs")
+        </div>
+        <div class="col-md-6 my-2">
+            <div class="form-group">
+                @*Html.Recaptcha(RecaptchaSettings.Value)
                     @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
                     @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
-                    <input type="submit" value="Отправить заявку" class="btn btn-primary" />
-                </div>
+                <input type="submit" value="Отправить заявку" class="btn btn-primary" />
+                <p class="text-danger">
+                    Обращаем внимание, что Вам доступна тестовая версия подачи заявлений, которая будет активна с 28.01.2021 по 31.01.2021 (до 15:00).
+                    Основной прием заявлений на предоставление дополнительной меры социальной поддержки будет осуществляться 1 февраля 2021 года - 9:00.
+                </p>
             </div>
         </div>
-    </form>
-
-<script>
-    data: () => ({
-
-    })
-</script>
+    </div>
+</form>
