@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Social.Application.Files
@@ -10,7 +11,9 @@ namespace Social.Application.Files
         public IFormFile FileBody { get; set; }
         public string Series { get; set; }
         public string Number { get; set; }
-        public DateTime DateOfIssue { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime? DateOfIssue { get; set; }
         public string Get { get; set; }
         public decimal FileId { get; set; }
         public string LabelName;
@@ -26,6 +29,7 @@ namespace Social.Application.Files
                 new DocsModel { FileId = 23, LabelName = "Свидетельство о регистрации по месту жительства в городе Сургуте или справка с места жительства в городе Сургуте" },
                 new DocsModel { FileId = 39, LabelName = "Cправка, подтверждающая факт установления инвалидности" },
                 new DocsModel { FileId = 42, LabelName = "Cправка врачебной комиссии, которая выдаётся медицинской организацией Ханты-Мансийского автономного округа – Югры, осуществляющей деятельность на территории муниципального образования городской округ город Сургут, где ребенок-инвалид состоит на диспансерном учете"},
+                new DocsModel { FileId = 10, LabelName = "СНИЛС"},
 
                 //Документ удостоверяющий личность родителя/законного представителя
                 new DocsModel { FileId = 27, LabelName = "Паспорт гражданина РФ (законного представителя)"},

@@ -1,8 +1,16 @@
 ﻿@model Social.Domain.DTOs.RepresentDTO
 
 <div class="row">
-    <p>Родитель/Законный представитель</p>
-
+    <div class="col-md-12">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="IsLegalRepresent" id="inlineRadio1" value="0" checked v-on:click="legal = 0" />
+            <label class="form-check-label" for="inlineRadio1">Родитель</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" asp-for="IsLegalRepresent" id="inlineRadio2" value="1" v-on:click="legal = 1" />
+            <label class="form-check-label" for="inlineRadio2">Законный представитель</label>
+        </div>
+    </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="SurnameRepresent" class="control-label"></label>
@@ -28,7 +36,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="PhoneMobile" class="control-label"></label>
-            <input asp-for="PhoneMobile" class="form-control" data-mask="+7(999) 999-99-99" />
+            <input asp-for="PhoneMobile" class="form-control" v-mask="'+7(###)###-####'" />
             <span asp-validation-for="PhoneMobile" class="text-danger"></span>
         </div>
     </div>

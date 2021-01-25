@@ -3,6 +3,8 @@ using Social.Domain.Models;
 using Social.Application.Repository.Interface;
 using Social.Domain.DTOs;
 using System.Threading.Tasks;
+using Social.Database;
+using System.Linq;
 
 namespace Social.Application.Person
 {
@@ -10,28 +12,46 @@ namespace Social.Application.Person
     {
         private readonly IBase _baseRepo;
         private readonly IMapper _mapper;
+        private readonly ApplicationDbContext _context;
+
         public ChildDTO ChildDTO { get; set; }
 
-        public CreateRepresent(IBase baseRepo, IMapper mapper)
+        public CreateRepresent(IBase baseRepo, IMapper mapper, ApplicationDbContext context)
         {
             _baseRepo = baseRepo;
             _mapper = mapper;
+            _context = context;
         }
 
-        public async Task<PersonsSocial> Do(RepresentDTO request)
+        public async Task<PersonsSocial> Do(RepresentDTO request, PersonsSocial child)
         {
             //TODO: Добавить проверку, есть ли этот родитель в системе
-            var represent = _mapper.Map<PersonsSocial>(new RepresentDTO
-            {
-                PersonId = _baseRepo.GetId(),
-                NameRepresent = request.NameRepresent,
-                SurnameRepresent = request.SurnameRepresent,
-                PatronymicRepresent = request.PatronymicRepresent,
-                Email = request.Email,
-                PhoneHome = request.PhoneHome,
-                PhoneMobile = request.PhoneMobile
-            });
+            var represent = _context.PersonsSocial.SingleOrDefault(x => x.Name == request.NameRepresent &&
+                                                                x.Surname == request.SurnameRepresent &&
+                                                                x.Patronymic == request.PatronymicRepresent
+                                                                );
 
+            var a = _context.PersonsSocialLegalRepresent.SingleOrDefault(x => x.IdLegalRepresent == represent.PersonId && x.IdPerson == child.PersonId);
+
+            if (represent != null && a.IdLegalRepresent == represent.PersonId)
+            {
+                return represent;
+            }
+            
+            else
+            {
+                represent = _mapper.Map<PersonsSocial>(new RepresentDTO
+                {
+                    PersonId = _baseRepo.GetId(),
+                    NameRepresent = request.NameRepresent,
+                    SurnameRepresent = request.SurnameRepresent,
+                    PatronymicRepresent = request.PatronymicRepresent,
+                    Email = request.Email,
+                    PhoneHome = request.PhoneHome,
+                    PhoneMobile = request.PhoneMobile
+                });
+            }
+            
             return represent;
         }
     }

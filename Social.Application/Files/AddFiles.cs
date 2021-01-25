@@ -97,11 +97,11 @@ namespace Social.Application.Files
                     servisesSocialPersonDoc.ServisesId = servises.Id;
                     servisesSocialPersonDoc.PersonsDocId = personDoc.Id;
                     servisesSocialPersonDoc.IdTypeDoc = formFile.FileId;
-                    //servisesSocialPersonDoc.IdUser = UserId; ???
+                    servisesSocialPersonDoc.IdUser = 1;
 
                     _baseRepo.Add(personDocFile);
                     _baseRepo.Add(personDoc);
-                    //_baseRepository.Add(servisesSocialDoc);
+                    _baseRepo.Add(servisesSocialDoc);
                     _baseRepo.Add(servisesSocialPersonDoc);
                 }
             }

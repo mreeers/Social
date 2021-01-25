@@ -37,6 +37,7 @@ namespace Social.Application.Helpers.Automapper
                 });
 
             CreateMap<ServisesDTO, ServisesSocial>();
+            CreateMap<ServisesSocial, ServisesDTO>();
 
             CreateMap<HolidayDTO, SocialSession>();
         }
