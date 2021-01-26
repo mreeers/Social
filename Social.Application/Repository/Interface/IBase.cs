@@ -10,6 +10,7 @@ namespace Social.Application.Repository.Interface
     {
         void Add<T>(T entity) where T : class;
         void Delete<T>(T entity) where T : class;
+        void Update<T>(T entity) where T : class;
         Task<bool> SaveAllAsync();
         decimal GetId();
         Task<IEnumerable<TypeDoc>> GetTypeDocs();

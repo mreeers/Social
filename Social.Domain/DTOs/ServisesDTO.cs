@@ -68,8 +68,6 @@ namespace Social.Domain.DTOs
         /// Текущий представитель
         /// </summary>
         public decimal? IdCurrRepresent { get; set; }
-        public string Unic_Code { get; set; }
-
 
         //public string InfoIpAdress { get; set; }
         //public string InfoBrowser { get; set; }

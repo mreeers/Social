@@ -108,7 +108,6 @@ namespace Social.Domain.Models
         /// Резерв
         /// </summary>
         public decimal? Reserve { get; set; }
-        public string Unic_Code { get; set; }
 
         public PersonsSocial IdCurrLegalRepresentNavigation { get; set; }
         public PersonsSocial IdCurrRepresentNavigation { get; set; }

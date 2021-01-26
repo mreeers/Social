@@ -754,10 +754,6 @@ namespace Social.Database
                     .HasColumnType("NUMBER")
                     .HasDefaultValueSql("0 ");
 
-                entity.Property(d => d.Unic_Code)
-                    .HasColumnName("UNIC_CODE")
-                    .HasColumnType("VARCHAR2(255)");
-
                 //entity.Property(d => d.InfoIpAdress)
                 //    .HasColumnName("INFO_IP_ADRESS")
                 //    .HasColumnType("VARCHAR2(20)");

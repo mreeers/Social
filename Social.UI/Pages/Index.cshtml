@@ -29,7 +29,7 @@
                 @*Html.Recaptcha(RecaptchaSettings.Value)
                     @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
                     @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
-                <input type="submit" value="Отправить заявку" class="btn btn-primary" />
+                <input type="submit" value="Отправить заявку" class="btn btn-primary" disabled/>
                 <p class="text-danger">
                     Обращаем внимание, что Вам доступна тестовая версия подачи заявлений, которая будет активна с 28.01.2021 по 31.01.2021 (до 15:00).
                     Основной прием заявлений на предоставление дополнительной меры социальной поддержки будет осуществляться 1 февраля 2021 года - 9:00.

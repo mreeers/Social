@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Social.Domain.Models.ServisesSocial>
+@{
+    int i = 0;
+}
+<table class="table table-hover">
+    <thead>
+    <th>
+        №
+    </th>
+    <th>
+        Номер заявления
+    </th>
+    <th>
+        Время создания
+    </th>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ToList())
+        {
+
+        <tr>
+            <td>
+                @{i++;}
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateReg)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

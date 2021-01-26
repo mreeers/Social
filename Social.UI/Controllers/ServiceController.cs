@@ -14,7 +14,6 @@ using Social.Domain.Models;
 
 namespace Social.UI.Controllers
 {
-    [Route("service")]
     [Route("controller")]
     public class ServiceController : Controller
     {
@@ -43,7 +42,7 @@ namespace Social.UI.Controllers
             return RedirectToAction("Received", new { docNum = services.Result.DocNum, email = represent.Email });
         }
 
-        [HttpGet]
+        [HttpGet("/received")]
         public async Task<IActionResult> Received(string docNum, string email)
         {
             if(docNum == null)
@@ -51,14 +50,14 @@ namespace Social.UI.Controllers
                 return BadRequest("Номер заявления отсутвует");
             }
             
-            EmailService emailService = new EmailService();
-            await emailService.SendEmailAsync(email, "Заявление отправлено в департамент образования", "Заявление" + docNum + " отправлено в департамент образования!");
+            //EmailService emailService = new EmailService();
+            //await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", "Заявление" + docNum + " отправлено в департамент образования!");
 
             ViewBag.Message = docNum;
             return View();
         }
 
-        [HttpGet]
+        [HttpGet("/list")]
         public async Task<IActionResult> List()
         {
             var list = await _context.ServisesSocial.ToListAsync();
