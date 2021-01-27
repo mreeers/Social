@@ -68,9 +68,6 @@ namespace Social.Application.Servises
                 servises.IdCurrRepresent = represent.PersonId;
             }
 
-            //Хм, кажется что не нужно
-            //new AddFiles(_context, _baseRepo).Do(files, childInfo, representInfo, servises);
-
             //_baseRepo.Add(child);
             //_baseRepo.Add(represent);
             _baseRepo.Add(servises);
@@ -78,19 +75,12 @@ namespace Social.Application.Servises
             if (represent.IsLegalRepresent == 0)
             {
                 //Записать в таблицу PERSONS_SOCIAL_LEGAL_REPRESENT
-                if (_context.PersonsSocialLegalRepresent.SingleOrDefaultAsync(x => x.IdLegalRepresent == represent.PersonId && x.IdPerson == child.PersonId) != null)
-                {
-                    
-                }
-                else
-                {
-                    var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
-                    personsSocialLegalRepresent.Id = _baseRepo.GetId();
-                    personsSocialLegalRepresent.IdLegalRepresent = represent.PersonId;
-                    personsSocialLegalRepresent.IdPerson = child.PersonId;
-                    personsSocialLegalRepresent.IdUser = 1;
-                    _baseRepo.Add(personsSocialLegalRepresent);
-                }
+                var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
+                personsSocialLegalRepresent.Id = _baseRepo.GetId();
+                personsSocialLegalRepresent.IdLegalRepresent = represent.PersonId;
+                personsSocialLegalRepresent.IdPerson = child.PersonId;
+                personsSocialLegalRepresent.IdUser = 1;
+                _baseRepo.Add(personsSocialLegalRepresent);
             }
             else
             {
@@ -119,7 +109,6 @@ namespace Social.Application.Servises
 
             foreach (var formFile in docs)
             {
-                //ServisesSocialDoc servisesSocialDoc = new ServisesSocialDoc();
                 PersonsSocialDocFile personDocFile = new PersonsSocialDocFile();
                 PersonsSocialDoc personDoc = new PersonsSocialDoc();
                 ServisesSocialPersonDoc servisesSocialPersonDoc = new ServisesSocialPersonDoc();
@@ -150,7 +139,7 @@ namespace Social.Application.Servises
                     personDocFile.FileName = formFile.FileBody.FileName;
                     personDocFile.DateFileCreate = DateTime.Now;
 
-                    if(personDocFile.FileBody.Length != null)
+                    if (personDocFile.FileBody.Length != null)
                         personDocFile.FileSize = personDocFile.FileBody.Length;
 
                     personDocFile.Extension = formFile.FileBody.FileName.Substring(formFile.FileBody.FileName.LastIndexOf('.'));
@@ -161,11 +150,11 @@ namespace Social.Application.Servises
 
                     if (formFile.FileId == 11 || formFile.FileId == 2 || formFile.FileId == 34 || formFile.FileId == 23 || formFile.FileId == 39 || formFile.FileId == 42)
                     {
-                        personDoc.PersonId = childInfo.PersonId;
+                        personDoc.PersonId = child.PersonId;
                     }
                     else
                     {
-                        personDoc.PersonId = representInfo.PersonId;
+                        personDoc.PersonId = represent.PersonId;
                     }
 
                     personDoc.Num = formFile.Number;

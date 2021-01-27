@@ -14,7 +14,7 @@
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="SurnameRepresent" class="control-label"></label>
-            <input asp-for="SurnameRepresent" class="form-control" />
+            <input asp-for="SurnameRepresent" v-model.trim="SurnameRepresent" v-touppercase class="form-control" />
             <span asp-validation-for="SurnameRepresent" class="text-danger"></span>
         </div>
     </div>
@@ -22,21 +22,21 @@
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="NameRepresent" class="control-label"></label>
-            <input asp-for="NameRepresent" class="form-control" />
+            <input asp-for="NameRepresent" v-model.trim="NameRepresent" v-touppercase class="form-control" />
             <span asp-validation-for="NameRepresent" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="PatronymicRepresent" class="control-label"></label>
-            <input asp-for="PatronymicRepresent" class="form-control" />
+            <input asp-for="PatronymicRepresent" v-model.trim="PatronymicRepresent" v-touppercase class="form-control" />
             <span asp-validation-for="PatronymicRepresent" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="PhoneMobile" class="control-label"></label>
-            <input asp-for="PhoneMobile" class="form-control" v-mask="'+7(###)###-####'" />
+            <input asp-for="PhoneMobile" v-model.trim="PhoneMobile" class="form-control" v-mask="'+7(###)###-####'" />
             <span asp-validation-for="PhoneMobile" class="text-danger"></span>
         </div>
     </div>

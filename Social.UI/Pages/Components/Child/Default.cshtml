@@ -4,35 +4,35 @@
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="SurnameChild" class="control-label"></label>
-            <input asp-for="SurnameChild" class="form-control" required="true" />
+            <input asp-for="SurnameChild" v-model.trim="SurnameChild" v-touppercase class="form-control" required="true" />
             <span asp-validation-for="SurnameChild" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="NameChild" class="control-label"></label>
-            <input asp-for="NameChild" class="form-control" required="true" />
+            <input asp-for="NameChild" v-model.trim="NameChild" v-touppercase class="form-control" required="true" />
             <span asp-validation-for="NameChild" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="PatronymicChild" class="control-label"></label>
-            <input asp-for="PatronymicChild" class="form-control"  />
+            <input asp-for="PatronymicChild" v-model.trim="PatronymicChild" v-touppercase class="form-control"  />
             <span asp-validation-for="PatronymicChild" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="Bdate" class="control-label"></label>
-            <input asp-for="Bdate" class="form-control" required="true" />
+            <input asp-for="Bdate" v-model="Bdate" class="form-control" required="true" />
             <span asp-validation-for="Bdate" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="Snils" class="control-label"></label>
-            <input asp-for="Snils" class="form-control" onchange="validate_date" v-mask="'###-###-### ##'"/>
+            <input asp-for="Snils" class="form-control" v-mask="'###-###-### ##'"/>
             <span asp-validation-for="Snils" class="text-danger"></span>
         </div>
     </div>

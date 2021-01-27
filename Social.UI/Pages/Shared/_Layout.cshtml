@@ -48,7 +48,16 @@
         el: '#app',
         data: {
             legal: 0,
-            file1: ''
+            errors: [],
+            SurnameChild: null,
+            PatronymicChild: null,
+            NameChild: null,
+            PatronymicChild: null,
+            Bdate: null,
+            SurnameRepresent: null,
+            NameRepresent: null,
+            PatronymicRepresent: null,
+            PhoneMobile: null
         },
 
         methods: {
@@ -67,6 +76,39 @@
                     return;
                 }
                 alert('File OK');
+            },
+            checkForm: function (e) {
+                if (this.SurnameChild && this.NameChild && this.SurnameRepresent && this.NameRepresent && this.PhoneMobile && this.Bdate) {
+                    return true;
+                }
+
+                if (!this.NameChild) {
+                    this.errors.push('Требуется указать имя ребенка.');
+                }
+                if (!this.SurnameChild) {
+                    this.errors.push('Требуется указать фамилию ребенка.');
+                }
+                if (!this.Bdate) {
+                    this.errors.push('Требуется указать дату рождения.');
+                }
+                if (!this.NameRepresent) {
+                    this.errors.push('Требуется указать имя родителя.');
+                }
+                if (!this.SurnameRepresent) {
+                    this.errors.push('Требуется указать фамилию родителя.');
+                }
+                if (!this.PhoneMobile) {
+                    this.errors.push('Требуется указать мобильный телефон.');
+                }
+
+                e.preventDefault();
+            }
+        },
+        directives: {
+            touppercase: {
+                update(el) {
+                    el.value = el.value.replace(/[a-zа-я]+/gi, (match) => match[0].toUpperCase() + match.substr(1))
+                },
             }
         }
     })

@@ -1,5 +1,5 @@
 ﻿@page
-<form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data" data-persist="garlic" data-domain="true" >
+<form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data" data-persist="garlic" data-domain="true" v-on:submit="checkForm">
     <div class="row">
         <p><i>Поля, отмеченные звездочкой (*), обязательны для заполнения.</i></p>
         <div class="col-md-12 border rounded">
@@ -27,8 +27,14 @@
         <div class="col-md-6 my-2">
             <div class="form-group">
                 @*Html.Recaptcha(RecaptchaSettings.Value)
-                    @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
-                    @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
+        @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
+        @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
+                <p v-if="errors.length">
+                    <b>Пожалуйста исправьте указанные ошибки:</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </p>
                 <input type="submit" value="Отправить заявку" class="btn btn-primary" />
                 <p class="text-danger">
                     Обращаем внимание, что Вам доступна тестовая версия подачи заявлений, которая будет активна с 28.01.2021 по 31.01.2021 (до 15:00).
