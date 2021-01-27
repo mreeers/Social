@@ -59,7 +59,7 @@ namespace Social.UI.Controllers
             if(email != null)
             {
                 EmailService emailService = new EmailService();
-                await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", $"Ваше заявление {docNum} отправлено в департамент образования Администрации города….");
+                await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", $"Ваше заявление {docNum} отправлено в департамент образования Администрации города…<br> -------<br> Это письмо сформировано автоматически службой уведомлений. Отвечать на него не нужно");
             }
             
 
