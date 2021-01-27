@@ -32,7 +32,7 @@ namespace Social.UI
             //});
 
             services.AddRazorPages();
-            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<ApplicationDbContext>(options => options.UseOracle(Configuration.GetConnectionString("MFCTestConnection")));
 
             services.AddScoped<IBase, Base>();
             services.AddScoped<IHoliday, Holiday>();

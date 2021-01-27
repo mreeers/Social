@@ -74,5 +74,7 @@ namespace Social.UI.Controllers
             IEnumerable<ServisesSocial> sortList = list.OrderBy(x => x.DateInsert);
             return View(sortList);
         }
+
+
     }
 }
