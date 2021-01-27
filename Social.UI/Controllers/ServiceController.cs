@@ -28,7 +28,7 @@ namespace Social.UI.Controllers
             _context = context;
         }
 
-        [HttpGet]
+        [HttpGet("/index")]
         public IActionResult Index()
         {
             return View();
@@ -37,9 +37,15 @@ namespace Social.UI.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(ChildDTO child, RepresentDTO represent, int socialSessionId, List<DocsModel> files, int method)
         {
-            var services = new CreateServises(_context, _mapper, _baseRepo).Do(child, represent, socialSessionId, files, method);
+            if (ModelState.IsValid)
+            {
+                var services = new CreateServises(_context, _mapper, _baseRepo).Do(child, represent, socialSessionId, files, method);
 
-            return RedirectToAction("Received", new { docNum = services.Result.DocNum, email = represent.Email });
+                return RedirectToAction("Received", new { docNum = services.Result.DocNum, email = represent.Email });
+            }
+            else
+                return BadRequest("Перейдите назад и проверьте правильность заполнения формы");
+            
         }
 
         [HttpGet("/received")]
@@ -50,8 +56,12 @@ namespace Social.UI.Controllers
                 return BadRequest("Номер заявления отсутвует");
             }
             
-            //EmailService emailService = new EmailService();
-            //await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", "Заявление" + docNum + " отправлено в департамент образования!");
+            if(email != null)
+            {
+                EmailService emailService = new EmailService();
+                await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", $"Ваше заявление {docNum} отправлено в департамент образования Администрации города….");
+            }
+            
 
             ViewBag.Message = docNum;
             return View();

@@ -26,7 +26,7 @@
                         <div class="form-inline">
                             <div>
                                 <label for="inputSeries">Серия</label>
-                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control"  />
                             </div>
                             <div class="ml-2">
                                 <label>Номер</label>
@@ -42,7 +42,7 @@
                     </div>
                     <div>
                         <label>Кем выдан</label>
-                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
+                        <input asp-for="@Model[0].Get" type="text" placeholder="Кем выдан" class="form-control" />
                     </div>
                 </div>
                 <div class="alert alert-secondary">
@@ -56,15 +56,15 @@
                         <div class="form-inline">
                             <div>
                                 <label for="inputSeries">Серия</label>
-                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                                <input asp-for="@Model[1].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" v-mask="'####'" />
                             </div>
                             <div class="ml-2">
                                 <label>Номер</label>
-                                <input asp-for="@Model[0].Number" type="text" placeholder="Номер" class="form-control" />
+                                <input asp-for="@Model[1].Number" type="text" placeholder="Номер" class="form-control" v-mask="'######'" />
                             </div>
                             <div class="ml-2">
                                 <label class="control-label">Дата выдачи</label>
-                                <input asp-for="@Model[0].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
+                                <input asp-for="@Model[1].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
                             </div>
 
                         </div>
@@ -72,7 +72,7 @@
                     </div>
                     <div>
                         <label>Кем выдан</label>
-                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
+                        <input asp-for="@Model[1].Get" type="text" placeholder="Кем выдан" class="form-control" />
                     </div>
                 </div>
                 <div class="alert alert-secondary">
@@ -99,22 +99,6 @@
                         <input asp-for="@Model[4].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
                 </div>
-                <div class="alert alert-secondary">
-                    <label>@Model[5].LabelName</label>
-                    <div class="custom-file">
-                        <input type="file" asp-for="@Model[5].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
-                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
-                        <input asp-for="@Model[5].FileId" type="hidden" class="form-control" placeholder="ID документа">
-                    </div>
-                </div>
-                <div class="alert alert-secondary">
-                    <label>@Model[6].LabelName</label>
-                    <div class="custom-file">
-                        <input type="file" asp-for="@Model[6].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
-                        <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
-                        <input asp-for="@Model[6].FileId" type="hidden" class="form-control" placeholder="ID документа">
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -131,25 +115,25 @@
             <div class="card-body">
 
                 <div class="alert alert-secondary">
-                    <label>@Model[7].LabelName</label>
+                    <label>@Model[5].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[7].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <input type="file" asp-for="@Model[5].FileBody" class="custom-file-input" id="customFileLang" lang="ru" onchange="ValidateSize(this)" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
-                        <input asp-for="@Model[7].FileId" type="hidden" class="form-control" placeholder="ID документа">
+                        <input asp-for="@Model[5].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
                     <div>
                         <div class="form-inline">
                             <div>
                                 <label for="inputSeries">Серия</label>
-                                <input asp-for="@Model[0].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
+                                <input asp-for="@Model[5].Series" id="inputSeries" type="text" placeholder="Серия" class="form-control" />
                             </div>
                             <div class="ml-2">
                                 <label>Номер</label>
-                                <input asp-for="@Model[0].Number" type="text" placeholder="Номер" class="form-control" />
+                                <input asp-for="@Model[5].Number" type="text" placeholder="Номер" class="form-control" />
                             </div>
                             <div class="ml-2">
                                 <label class="control-label">Дата выдачи</label>
-                                <input asp-for="@Model[0].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
+                                <input asp-for="@Model[5].DateOfIssue" type="date" class="form-control" onchange="validate_date" />
                             </div>
 
                         </div>
@@ -157,7 +141,7 @@
                     </div>
                     <div>
                         <label>Кем выдан</label>
-                        <input asp-for="@Model[0].Number" type="text" placeholder="Кем выдан" class="form-control" />
+                        <input asp-for="@Model[5].Get" type="text" placeholder="Кем выдан" class="form-control" />
                     </div>
                 </div>
             </div>
@@ -173,7 +157,7 @@
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                @for (int i = 8; i <= 10; i++)
+                @for (int i = 6; i <= 8; i++)
                 {
                     <div class="alert alert-secondary">
                         <label>@Model[i].LabelName</label>

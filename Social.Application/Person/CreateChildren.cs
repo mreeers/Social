@@ -26,7 +26,8 @@ namespace Social.Application.Person
             //TODO: Добавить проверку, есть ли этот ребенок в системе
             var child = _context.PersonsSocial.SingleOrDefault(x => x.Name == request.NameChild && 
                                                                 x.Surname == request.SurnameChild && 
-                                                                x.Patronymic == request.PatronymicChild);
+                                                                x.Patronymic == request.PatronymicChild &&
+                                                                x.Bdate == request.Bdate);
 
             if(child != null)
             {
@@ -44,11 +45,12 @@ namespace Social.Application.Person
                     Bdate = request.Bdate,
                     Birthplace = request.Birthplace,
                     Sex = request.Sex,
+                    Snils = request.Snils
                 });
             }
             
-            //_baseRepo.Add(child);
-            //await _baseRepo.SaveAllAsync();
+            _baseRepo.Add(child);
+            await _baseRepo.SaveAllAsync();
 
             return child;
         }

@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Social.Domain.Validate;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace Social.Domain.DTOs
 {
+    
     public class ChildDTO
     {
         public decimal PersonId { get; set; }
@@ -21,6 +23,7 @@ namespace Social.Domain.DTOs
         /// </summary>
         [Display(Name = "Имя *")]
         [StringLength(200)]
+        
         [Required]
         public string NameChild { get; set; }
 
@@ -36,6 +39,7 @@ namespace Social.Domain.DTOs
         /// </summary>
         [DataType(DataType.Date)]
         [Display(Name = "Дата рождения *")]
+        [ChildAgeValidate]
         [Required]
         public DateTime? Bdate { get; set; }
 
@@ -54,8 +58,8 @@ namespace Social.Domain.DTOs
         /// <summary>
         /// Место рождения
         /// </summary>
-        [MaxLengthAttribute(200)]
-        [Display(Name = "СНИЛС *")]
+        [MaxLengthAttribute(25)]
+        [Display(Name = "СНИЛС")]
         public string Snils { get; set; }
     }
 }

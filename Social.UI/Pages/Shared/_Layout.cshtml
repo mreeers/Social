@@ -18,19 +18,6 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/service">Service</a>
-                        </li>
-                    </ul>
-                </div>
             </div>
         </nav>
     </header>
@@ -51,6 +38,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/vue/vue.min.js"></script>
     <script src="~/lib/vue-the-mask/vue-the-mask.min.js"></script>
+    <script src="~/lib/garlic.js/garlic.min.js"></script>
 
     @RenderSection("Scripts", required: false)
 
@@ -59,8 +47,10 @@
     var app = new Vue({
         el: '#app',
         data: {
-            legal: 0
+            legal: 0,
+            file1: ''
         },
+
         methods: {
             onSubmit(e) {
                 const file = this.$refs.file.files[0];
@@ -88,13 +78,16 @@
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 </script>
-<script>
-    //Выбор только одного checkbox
-    $('#relax input:checkbox').click(function () {
-        if ($(this).is(':checked')) {
-            $('#relax input:checkbox').not(this).prop('checked', false);
-        }
-    });
+<script type="text/javascript">
+    function ValidateSize(file) {
+        var FileSize = file.files[0].size / 1024 / 1024; // in MB
+        var FileExp = file.files[0].
+            if(FileSize > 5)
+                alert('Размер файла превышает 5 мегабайт.');
+    }
+}
 </script>
+
+
 
 </html>

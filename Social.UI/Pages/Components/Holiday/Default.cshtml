@@ -43,7 +43,7 @@
                     </td>
                     <td>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" value="@item.Id" name="SocialSessionId">
+                            <input type="radio" class="form-check-input" value="@item.Id" name="SocialSessionId" required> 
                         </div>
                     </td>
                 </tr>
@@ -54,9 +54,9 @@
 <div class="form-group">
     <label>Способ доставки</label>
     <select class="custom-select" id="select_some_type" name="method">
-        <option value="0">Авиа</option>
-        <option value="1">Ж/Д</option>
-        <option value="2">Автобус</option>
-        <option value="3">Самостоятельно</option>
+        <option disabled value="0">Авиа</option>
+        <option disabled value="1">Ж/Д</option>
+        <option disabled value="2">Автобус</option>
+        <option selected value="3">Самостоятельно</option>
     </select>
 </div>

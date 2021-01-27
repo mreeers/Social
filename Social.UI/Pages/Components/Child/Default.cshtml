@@ -18,21 +18,21 @@
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="PatronymicChild" class="control-label"></label>
-            <input asp-for="PatronymicChild" class="form-control" required="true" />
+            <input asp-for="PatronymicChild" class="form-control"  />
             <span asp-validation-for="PatronymicChild" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="Bdate" class="control-label"></label>
-            <input asp-for="Bdate" class="form-control" required="true" onchange="validate_date" />
+            <input asp-for="Bdate" class="form-control" required="true" />
             <span asp-validation-for="Bdate" class="text-danger"></span>
         </div>
     </div>
     <div class="col-md-4">
         <div class="form-group">
             <label asp-for="Snils" class="control-label"></label>
-            <input asp-for="Snils" class="form-control" required="true" onchange="validate_date" v-mask="'###-###-### ##'"/>
+            <input asp-for="Snils" class="form-control" onchange="validate_date" v-mask="'###-###-### ##'"/>
             <span asp-validation-for="Snils" class="text-danger"></span>
         </div>
     </div>

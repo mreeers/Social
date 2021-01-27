@@ -28,7 +28,9 @@ namespace Social.Application.Person
             //TODO: Добавить проверку, есть ли этот родитель в системе
             var represent = _context.PersonsSocial.SingleOrDefault(x => x.Name == request.NameRepresent &&
                                                                 x.Surname == request.SurnameRepresent &&
-                                                                x.Patronymic == request.PatronymicRepresent);
+                                                                x.Patronymic == request.PatronymicRepresent &&
+                                                                x.PhoneMobile == request.PhoneMobile
+                                                                );
             if(represent == null)
             {
                 represent = _mapper.Map<PersonsSocial>(new RepresentDTO
@@ -45,28 +47,11 @@ namespace Social.Application.Person
             
             else
             {
-                var a = _context.PersonsSocialLegalRepresent.SingleOrDefault(x => x.IdLegalRepresent == represent.PersonId && x.IdPerson == child.PersonId);
-
-                if (represent != null && a.IdLegalRepresent == represent.PersonId)
-                {
-                    return represent;
-                }
-                else
-                {
-                    represent = _mapper.Map<PersonsSocial>(new RepresentDTO
-                    {
-                        PersonId = _baseRepo.GetId(),
-                        NameRepresent = request.NameRepresent,
-                        SurnameRepresent = request.SurnameRepresent,
-                        PatronymicRepresent = request.PatronymicRepresent,
-                        Email = request.Email,
-                        PhoneHome = request.PhoneHome,
-                        PhoneMobile = request.PhoneMobile
-                    });
-                }
+                return represent;
             }
-            //_baseRepo.Add(represent);
-            //await _baseRepo.SaveAllAsync();
+
+            _baseRepo.Add(represent);
+            await _baseRepo.SaveAllAsync();
 
             return represent;
         }

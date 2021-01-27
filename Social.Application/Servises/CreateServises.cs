@@ -68,21 +68,29 @@ namespace Social.Application.Servises
                 servises.IdCurrRepresent = represent.PersonId;
             }
 
-            new AddFiles(_context, _baseRepo).Do(files, childInfo, representInfo, servises);
+            //Хм, кажется что не нужно
+            //new AddFiles(_context, _baseRepo).Do(files, childInfo, representInfo, servises);
 
-            _baseRepo.Add(child);
-            _baseRepo.Add(represent);
+            //_baseRepo.Add(child);
+            //_baseRepo.Add(represent);
             _baseRepo.Add(servises);
 
             if (represent.IsLegalRepresent == 0)
             {
                 //Записать в таблицу PERSONS_SOCIAL_LEGAL_REPRESENT
-                var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
-                personsSocialLegalRepresent.Id = _baseRepo.GetId();
-                personsSocialLegalRepresent.IdLegalRepresent = represent.PersonId;
-                personsSocialLegalRepresent.IdPerson = child.PersonId;
-                personsSocialLegalRepresent.IdUser = 1;
-                _baseRepo.Add(personsSocialLegalRepresent);
+                if (_context.PersonsSocialLegalRepresent.SingleOrDefaultAsync(x => x.IdLegalRepresent == represent.PersonId && x.IdPerson == child.PersonId) != null)
+                {
+                    
+                }
+                else
+                {
+                    var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
+                    personsSocialLegalRepresent.Id = _baseRepo.GetId();
+                    personsSocialLegalRepresent.IdLegalRepresent = represent.PersonId;
+                    personsSocialLegalRepresent.IdPerson = child.PersonId;
+                    personsSocialLegalRepresent.IdUser = 1;
+                    _baseRepo.Add(personsSocialLegalRepresent);
+                }
             }
             else
             {
@@ -138,7 +146,7 @@ namespace Social.Application.Servises
                     // установка массива байтов
                     //Записывает файл в базу PERSONS_SOCIAL_DOC_FILE
                     personDocFile.Id = _baseRepo.GetId();
-                    //personDocFile.FileBody = file;
+                    personDocFile.FileBody = file;
                     personDocFile.FileName = formFile.FileBody.FileName;
                     personDocFile.DateFileCreate = DateTime.Now;
 
@@ -162,7 +170,7 @@ namespace Social.Application.Servises
 
                     personDoc.Num = formFile.Number;
                     personDoc.Ser = formFile.Series;
-                    personDoc.Bdate = formFile.DateOfIssue;
+                    personDoc.GetDate = formFile.DateOfIssue;
                     personDoc.Get = formFile.Get;
                     personDoc.TypeDocId = formFile.FileId;
                     personDoc.Guid = Guid.NewGuid().ToString();
@@ -176,9 +184,7 @@ namespace Social.Application.Servises
 
                     _baseRepo.Add(personDocFile);
                     _baseRepo.Add(personDoc);
-                    //_baseRepo.Add(servisesSocialDoc);
                     _baseRepo.Add(servisesSocialPersonDoc);
-                    //await _baseRepo.SaveAllAsync();
                 }
             }
             try
@@ -191,8 +197,6 @@ namespace Social.Application.Servises
                     servisesHistorys.IdStatus = 400; //Статус - Формирование услуги
                     _baseRepo.Add(servisesHistorys);
                     await _baseRepo.SaveAllAsync();
-
-                    
                 }
                 else
                 {
@@ -201,37 +205,12 @@ namespace Social.Application.Servises
             }
             catch (Exception ex)
             {
-
+                var err = ex.Message;
             }
 
-            //Хз почему Entity не может обновить запись
             servises.IdServiceHistorys = servisesHistorys.Id;
             _baseRepo.Update(servises);
             await _baseRepo.SaveAllAsync();
-
-            //using (var command = _context.Database.GetDbConnection().CreateCommand())
-            //{
-            //    string getIdSql = $@"UPDATE SERVISES_SOCIAL SET ID_SERVICE_HISTORYS={servisesHistorys.Id} WHERE ID={servises.Id}";
-
-            //    try
-            //    {
-            //        command.Connection.Open();
-            //        command.CommandText = getIdSql;
-            //        command.ExecuteScalar().ToString();
-            //        command.Connection.Close();
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw new Exception();
-            //    }
-            //}
-            //TODO: если не сохранилось, то надо сообщить об этом
-            //if (await _baseRepo.SaveAllAsync())
-            //{
-            //    //Передать, что все окей и номер 
-            //    //return RedirectToAction("Success", new { DocNum });
-            //    return servises;
-            //}
 
             return servises;
         }
