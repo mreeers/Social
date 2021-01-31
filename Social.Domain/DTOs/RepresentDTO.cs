@@ -50,6 +50,7 @@ namespace Social.Domain.DTOs
         /// </summary>
         [Display(Name = "Мобильный телефон *")]
         [Required]
+        [DataType(DataType.PhoneNumber)]
         public string PhoneMobile { get; set; }
 
         /// <summary>

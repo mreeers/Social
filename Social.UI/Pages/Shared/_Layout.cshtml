@@ -14,10 +14,10 @@
                 <a class="navbar-brand" asp-area="" asp-page="/Index">
                     Дополнительная мера социальной поддержки
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                @*<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>*@
             </div>
         </nav>
     </header>
@@ -28,9 +28,10 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top  text-muted">
         <div class="container">
-            &copy; 2020 - Social.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <p>Специалист для консультации по заполнению формы Барышникова Кристина Олеговна тел. 52-57-18.</p>
+            <p>Специалист по техническим вопросам Ефанов Александр Егорович тел. 52-28-47.</p>
         </div>
     </footer>
 
@@ -113,23 +114,16 @@
         }
     })
 </script>
-<script>
+<script type="text/javascript">
     // Add the following code if you want the name of the file appear on select
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-</script>
-<script type="text/javascript">
     function ValidateSize(file) {
         var FileSize = file.files[0].size / 1024 / 1024; // in MB
-        var FileExp = file.files[0].
             if(FileSize > 5)
-                alert('Размер файла превышает 5 мегабайт.');
+        alert('Внимание! Размер файла превышает 5 мегабайт.');
     }
-}
 </script>
-
-
-
 </html>

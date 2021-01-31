@@ -24,31 +24,31 @@ namespace Social.Application.Person
         public async Task<PersonsSocial> Do(ChildDTO request)
         {
             //TODO: Добавить проверку, есть ли этот ребенок в системе
-            var child = _context.PersonsSocial.SingleOrDefault(x => x.Name == request.NameChild && 
-                                                                x.Surname == request.SurnameChild && 
-                                                                x.Patronymic == request.PatronymicChild &&
-                                                                x.Bdate == request.Bdate);
+            //var child = _context.PersonsSocial.SingleOrDefault(x => x.Name == request.NameChild && 
+            //                                                    x.Surname == request.SurnameChild && 
+            //                                                    x.Patronymic == request.PatronymicChild &&
+            //                                                    x.Bdate == request.Bdate);
 
-            if(child != null)
-            {
-                return child;
-            }
+            //if(child != null)
+            //{
+            //    return child;
+            //}
 
-            else
+            //else
+            //{
+            var child = _mapper.Map<PersonsSocial>(new ChildDTO
             {
-                child = _mapper.Map<PersonsSocial>(new ChildDTO
-                {
-                    PersonId = _baseRepo.GetId(),
-                    NameChild = request.NameChild,
-                    SurnameChild = request.SurnameChild,
-                    PatronymicChild = request.PatronymicChild,
-                    Bdate = request.Bdate,
-                    Birthplace = request.Birthplace,
-                    Sex = request.Sex,
-                    Snils = request.Snils
-                });
-            }
-            
+                PersonId = _baseRepo.GetId(),
+                NameChild = request.NameChild,
+                SurnameChild = request.SurnameChild,
+                PatronymicChild = request.PatronymicChild,
+                Bdate = request.Bdate,
+                Birthplace = request.Birthplace,
+                Sex = request.Sex,
+                Snils = request.Snils
+            });
+            //}
+
             _baseRepo.Add(child);
             await _baseRepo.SaveAllAsync();
 

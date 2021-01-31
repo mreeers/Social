@@ -1,5 +1,5 @@
 ﻿@page
-<form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data" data-persist="garlic" data-domain="true" v-on:submit="checkForm">
+<form asp-controller="Service" asp-action="Create" method="post" enctype="multipart/form-data" data-persist="garlic" data-domain="true" v-on:submit="onSubmit">
     <div class="row">
         <p><i>Поля, отмеченные звездочкой (*), обязательны для заполнения.</i></p>
         <div class="col-md-12 border rounded">
@@ -24,22 +24,26 @@
             <!--Файлы для загрузки DocsModel-->
             @await Component.InvokeAsync("Docs")
         </div>
-        <div class="col-md-6 my-2">
+        <div class="col-md-8 my-2">
             <div class="form-group">
-                @*Html.Recaptcha(RecaptchaSettings.Value)
-        @{ if (DateTime.Now <= new DateTime(2020, 02, 03, 09, 00, 00))
-        @Html.Raw("<p class='text-danger'>Дата подачи заявлений: 03.02.2020 с 09:00</p>") }*@
-                <p v-if="errors.length">
-                    <b>Пожалуйста исправьте указанные ошибки:</b>
-                    <ul>
-                        <li v-for="error in errors">{{ error }}</li>
-                    </ul>
-                </p>
-                <input type="submit" value="Отправить заявку" class="btn btn-primary" />
-                <p class="text-danger">
-                    Обращаем внимание, что Вам доступна тестовая версия подачи заявлений, которая будет активна с 28.01.2021 по 31.01.2021 (до 15:00).
-                    Основной прием заявлений на предоставление дополнительной меры социальной поддержки будет осуществляться с 1 февраля 2021 года - 9:00.
-                </p>
+                @*Html.Recaptcha(RecaptchaSettings.Value)*@
+                @{ if (DateTime.Now >= new DateTime(2021, 02, 01, 09, 00, 00))
+                    {
+                        var dateNow = DateTime.Now;
+                        @Html.Raw($"<p class='text-danger'>Подачи заявлений начнется: 01.02.2021 с 09:00. Текущая дата: {dateNow} </p>");
+                    }
+                    else
+                    {
+                        @Html.Raw("<input type='submit' value='Отправить заявку' class='btn btn-primary' />");
+                    }
+                }
+                @*<p v-if="errors.length">
+            <b>Пожалуйста исправьте указанные ошибки:</b>
+            <ul>
+                <li v-for="error in errors">{{ error }}</li>
+            </ul>
+        </p>*@
+                
             </div>
         </div>
     </div>

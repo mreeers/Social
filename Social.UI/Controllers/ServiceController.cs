@@ -29,7 +29,7 @@ namespace Social.UI.Controllers
         }
 
         [HttpGet("/index")]
-        public IActionResult Index()
+        public IActionResult Index(ChildDTO child, RepresentDTO represent, int socialSessionId, List<DocsModel> files, int method)
         {
             return View();
         }
@@ -44,7 +44,7 @@ namespace Social.UI.Controllers
                 return RedirectToAction("Received", new { docNum = services.Result.DocNum, email = represent.Email });
             }
             else
-                return BadRequest("Перейдите назад и проверьте правильность заполнения формы");
+                return BadRequest("Вернитесь на прошлую страницу и проверьте правильность заполнения формы.");
             
         }
 
@@ -59,7 +59,7 @@ namespace Social.UI.Controllers
             if(email != null)
             {
                 EmailService emailService = new EmailService();
-                await emailService.SendEmailAsync(email, "Тестовое заявление отправлено в департамент образования", $"Ваше заявление {docNum} отправлено в департамент образования Администрации города…<br> -------<br> Это письмо сформировано автоматически службой уведомлений. Отвечать на него не нужно");
+                await emailService.SendEmailAsync(email, "Заявление отправлено в департамент образования", $"Ваше заявление {docNum} отправлено в департамент образования Администрации города…<br> -------<br> Это письмо сформировано автоматически службой уведомлений. Отвечать на него не нужно");
             }
             
 

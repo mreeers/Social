@@ -47,9 +47,6 @@ namespace Social.Application.Servises
 
             var servisesHistorys = new ServisesSocialHistorys();
 
-            //Уникальный код
-            //var unicCode = UnicCodeService(childInfo, representInfo, SocialSessionId);
-
             var servises = _mapper.Map<ServisesSocial>(new ServisesDTO
             {
                 Id = _baseRepo.GetId(),
@@ -74,6 +71,7 @@ namespace Social.Application.Servises
 
             if (represent.IsLegalRepresent == 0)
             {
+
                 //Записать в таблицу PERSONS_SOCIAL_LEGAL_REPRESENT
                 var personsSocialLegalRepresent = new PersonsSocialLegalRepresent();
                 personsSocialLegalRepresent.Id = _baseRepo.GetId();
@@ -81,6 +79,7 @@ namespace Social.Application.Servises
                 personsSocialLegalRepresent.IdPerson = child.PersonId;
                 personsSocialLegalRepresent.IdUser = 1;
                 _baseRepo.Add(personsSocialLegalRepresent);
+
             }
             else
             {
