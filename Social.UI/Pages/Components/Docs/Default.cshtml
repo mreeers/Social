@@ -48,7 +48,7 @@
                 <div class="alert alert-secondary">
                     <label>@Model[1].LabelName</label>
                     <div class="custom-file">
-                        <input refs="file" type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <input refs="file" type="file" asp-for="@Model[1].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" onchange="ValidateSize(this)">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[1].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
@@ -78,7 +78,7 @@
                 <div class="alert alert-secondary">
                     <label>@Model[2].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[2].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" required>
+                        <input type="file" asp-for="@Model[2].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" required onchange="ValidateSize(this)">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[2].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
@@ -86,7 +86,7 @@
                 <div class="alert alert-secondary">
                     <label>@Model[3].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[3].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" required>
+                        <input type="file" asp-for="@Model[3].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" required onchange="ValidateSize(this)">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[3].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
@@ -94,7 +94,7 @@
                 <div class="alert alert-secondary">
                     <label>@Model[4].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[4].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" >
+                        <input type="file" asp-for="@Model[4].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" onchange="ValidateSize(this)">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[4].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
@@ -117,7 +117,7 @@
                 <div class="alert alert-secondary">
                     <label>@Model[5].LabelName</label>
                     <div class="custom-file">
-                        <input type="file" asp-for="@Model[5].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                        <input type="file" asp-for="@Model[5].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" onchange="ValidateSize(this)">
                         <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                         <input asp-for="@Model[5].FileId" type="hidden" class="form-control" placeholder="ID документа">
                     </div>
@@ -162,7 +162,7 @@
                     <div class="alert alert-secondary">
                         <label>@Model[i].LabelName</label>
                         <div class="custom-file">
-                            <input type="file" asp-for="@Model[i].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx">
+                            <input type="file" asp-for="@Model[i].FileBody" class="custom-file-input" id="customFileLang" lang="ru" accept=".jpg, .jpeg, .png, .pdf, .tiff, .doc, .docx" onchange="ValidateSize(this)">
                             <label class="custom-file-label" for="customFileLang" data-browse="Обзор"></label>
                             <input asp-for="@Model[i].FileId" type="hidden" class="form-control" placeholder="ID документа">
                         </div>
